@@ -6,9 +6,6 @@ import { MDX } from 'js-mdict';
 interface DictionaryEntry {
   word: string;
   definition: string;
-  pronunciation?: string;
-  examples?: string;
-  dictionaryType: string;
 }
 
 class MdxToSqliteConverter {
@@ -17,8 +14,7 @@ class MdxToSqliteConverter {
   
   constructor(
     private mdxPath: string,
-    private dbPath: string,
-    private dictionaryType: string = path.parse(mdxPath).name
+    private dbPath: string
   ) {
     // 验证文件存在
     if (!fs.existsSync(mdxPath)) {
@@ -38,18 +34,13 @@ class MdxToSqliteConverter {
       PRAGMA journal_mode = WAL;
       PRAGMA synchronous = NORMAL;
       
-      CREATE TABLE IF NOT EXISTS entries (
+      CREATE TABLE IF NOT EXISTS oxfordO9C (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         word TEXT NOT NULL,
-        definition TEXT NOT NULL,
-        pronunciation TEXT,
-        examples TEXT,
-        dictionaryType TEXT NOT NULL,
-        UNIQUE(word, dictionaryType)
+        definition TEXT NOT NULL
       );
       
-      CREATE INDEX IF NOT EXISTS idx_word ON entries(word);
-      CREATE INDEX IF NOT EXISTS idx_dict_type ON entries(dictionaryType);
+      CREATE INDEX IF NOT EXISTS idx_word ON oxfordO9C(word);
     `);
   }
 
@@ -58,13 +49,13 @@ class MdxToSqliteConverter {
 
     // 准备SQL语句
     const insert = this.db.prepare(`
-      INSERT OR IGNORE INTO entries 
-      (word, definition, pronunciation, examples, dictionaryType)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT OR IGNORE INTO oxfordO9C 
+      (word, definition)
+      VALUES (?, ?)
     `);
 
     // 获取所有词条（根据js-mdict实际API调整）
-    const wordList = this.getWordList();
+    const wordList = this.mdict.keywordList;
     const totalWords = wordList.length;
     let processed = 0;
 
@@ -73,16 +64,13 @@ class MdxToSqliteConverter {
     // 处理每个词条
     for (const word of wordList) {
       try {
-        const record = this.mdict.lookup(word);
+        const record = this.mdict.lookup(word.keyText);
         // @ts-ignore
         const entry = this.processEntry(word, record.definition);
         
         insert.run(
-          entry.word,
-          entry.definition,
-          entry.pronunciation,
-          entry.examples,
-          entry.dictionaryType
+          word.keyText,
+          entry.definition
         );
 
         // 进度报告
@@ -99,39 +87,13 @@ class MdxToSqliteConverter {
   }
 
   /**
-   * 获取词表（根据js-mdict实际情况可能需要自定义实现）
-   */
-  private getWordList(): string[] {
-    // 如果js-mdict有直接获取词表的方法则替换此实现
-    // 这里假设需要通过其他方式获取词表
-    const buffer = fs.readFileSync(this.mdxPath);
-    // 简单示例：从文件内容提取单词（实际需要根据MDX格式实现）
-    const wordMatches = buffer.toString('ascii').match(/@@@LINK=.+?|[\w'-]+/g);
-    return [...new Set(wordMatches || [])]; // 去重
-  }
-
-  /**
    * 处理词条内容
    */
   private processEntry(word: string, definition: string): DictionaryEntry {
     return {
       word,
       definition,
-      dictionaryType: this.dictionaryType,
-      // 以下为可选内容提取
-      pronunciation: this.extractPronunciation(definition),
-      examples: this.extractExamples(definition)
     };
-  }
-
-  private extractPronunciation(html: string): string | undefined {
-    const match = html.match(/<span class="pron">\[(.*?)\]<\/span>/);
-    return match?.[1];
-  }
-
-  private extractExamples(html: string): string | undefined {
-    const exMatches = html.match(/<ex>(.*?)<\/ex>/g);
-    return exMatches?.map(ex => ex.replace(/<[^>]+>/g, '')).join('\n');
   }
 
   private finalize(): void {
@@ -145,7 +107,7 @@ class MdxToSqliteConverter {
 }
 
 
-const mdxPath = path.resolve(`./dict/oxfordO8C/O8C.mdx`);
+const mdxPath = path.resolve(`./dict/source/oxfordO9C/牛津高阶英汉双解词典（第9版）.mdx`);
 const dbPath = path.resolve(`./dict/db/oxfordO8C.db`);
 
 if (!fs.existsSync(mdxPath) || !fs.existsSync(path.dirname(dbPath))) {

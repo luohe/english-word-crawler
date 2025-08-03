@@ -16,7 +16,7 @@
       "restart":true
     },
     {
-      "name":"Launch via nodemon",
+      "name":"nodemon cur file",
       "type":"node",
       "request":"launch",
       "protocol":"inspector",
