@@ -26,7 +26,6 @@ yarn-error.log*
 /.qshell
 
 .idea/
-.vscode/
 
 # 排除整个dict目录
-/dict/
+/dict/source/

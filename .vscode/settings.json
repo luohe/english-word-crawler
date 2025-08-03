@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:nodejs-crawler}/dict/db/oxfordO8C.db",
+      "name": "O8C"
+    }
+  ],
+  "editor.fontSize": 16
+}
