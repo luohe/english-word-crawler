@@ -5,6 +5,12 @@
       "driver": "SQLite",
       "database": "${workspaceFolder:nodejs-crawler}/dict/db/oxfordO8C.db",
       "name": "O8C"
+    },
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:english-word-crawler}/dict/db/oxfordO8C.db",
+      "name": "oxfordO9C"
     }
   ],
   "editor.fontSize": 16
