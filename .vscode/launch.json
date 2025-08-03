@@ -14,6 +14,20 @@
         "./src/main.ts"
       ],
       "restart":true
+    },
+    {
+      "name":"Launch via nodemon",
+      "type":"node",
+      "request":"launch",
+      "protocol":"inspector",
+      "console": "integratedTerminal",
+      "cwd":"${workspaceRoot}",
+      // "runtimeExecutable":"ts-node-dev",
+      "runtimeArgs": ["--trace-warnings", "--loader", "ts-node/esm"],
+      "args":[
+        "${file}"
+      ],
+      "restart":true
     }
   ]
 }
