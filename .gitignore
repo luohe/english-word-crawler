@@ -31,3 +31,4 @@ yarn-error.log*
 # 排除整个dict目录
 /dict/source/
 /dict/db/
+/dict/definition/

@@ -108,7 +108,7 @@ class MdxToSqliteConverter {
 
 
 const mdxPath = path.resolve(`./dict/source/oxfordO9C/牛津高阶英汉双解词典（第9版）.mdx`);
-const dbPath = path.resolve(`./dict/db/oxfordO9C.db`);
+const dbPath = path.resolve(`./dict/db/oxford.db`);
 
 if (!fs.existsSync(mdxPath) || !fs.existsSync(path.dirname(dbPath))) {
   console.error(`错误: 文件 ${mdxPath} 不存在`);
