@@ -1,0 +1,92 @@
+[
+  {
+    "chineseName": "名词",
+    "englishName": "noun",
+    "abbreviation": "n.",
+    "explanation": "Denotes a person, thing, place, concept, etc."
+  },
+  {
+    "chineseName": "动词",
+    "englishName": "verb",
+    "abbreviation": "v.",
+    "explanation": "Expresses an action, state, or occurrence."
+  },
+  {
+    "chineseName": "形容词",
+    "englishName": "adjective",
+    "abbreviation": "adj.",
+    "explanation": "Modifies a noun or pronoun, describing its nature or characteristics."
+  },
+  {
+    "chineseName": "副词",
+    "englishName": "adverb",
+    "abbreviation": "adv.",
+    "explanation": "Modifies a verb, adjective, or other adverb, indicating degree, manner, etc."
+  },
+  {
+    "chineseName": "代词",
+    "englishName": "pronoun",
+    "abbreviation": "pron.",
+    "explanation": "Replaces a noun or noun phrase to avoid repetition."
+  },
+  {
+    "chineseName": "介词",
+    "englishName": "preposition",
+    "abbreviation": "prep.",
+    "explanation": "Indicates the relationship between a noun/pronoun and other words (time, place, etc.)."
+  },
+  {
+    "chineseName": "连词",
+    "englishName": "conjunction",
+    "abbreviation": "conj.",
+    "explanation": "Connects words, phrases, or clauses to express logical relationships."
+  },
+  {
+    "chineseName": "感叹词",
+    "englishName": "exclamation",
+    "abbreviation": "exclam.",
+    "explanation": "Expresses strong emotion, usually used independently."
+  },
+  {
+    "chineseName": "限定词",
+    "englishName": "determiner",
+    "abbreviation": "det.",
+    "explanation": "Limits the reference of a noun (e.g., this, some, each)."
+  },
+  {
+    "chineseName": "助动词",
+    "englishName": "auxiliary verb",
+    "abbreviation": "aux.",
+    "explanation": "Helps form tenses, voices, or questions (e.g., do, have)."
+  },
+  {
+    "chineseName": "情态动词",
+    "englishName": "modal verb",
+    "abbreviation": "modal",
+    "explanation": "Expresses ability, permission, speculation, etc. (e.g., can, must)."
+  },
+  {
+    "chineseName": "前缀",
+    "englishName": "prefix",
+    "abbreviation": "prefix",
+    "explanation": "A word part added before a word to change its meaning (e.g., un-, pre-)."
+  },
+  {
+    "chineseName": "后缀",
+    "englishName": "suffix",
+    "abbreviation": "suffix",
+    "explanation": "A word part added after a word to change its meaning or part of speech (e.g., -ness, -ly)."
+  },
+  {
+    "chineseName": "缩写词",
+    "englishName": "abbreviation",
+    "abbreviation": "abbr.",
+    "explanation": "A shortened form of a word or phrase (e.g., Mr., etc.)."
+  },
+  {
+    "chineseName": "符号",
+    "englishName": "symbol",
+    "abbreviation": "symb.",
+    "explanation": "A character representing a specific meaning (e.g., %, $)."
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "name": "nodejs-crawler",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A Node.js crawler project using TypeScript, Express, Crawlee, and SQLite.",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "parse": "node --trace-warnings --loader ts-node/esm ./src/main.ts",
+    "start": "node dist/app.js",
+    "dev": "ts-node src/app.ts",
+    "test": "jest",
+    "init-db": "ts-node scripts/initDatabase.ts",
+    "validate-proxies": "ts-node scripts/validateProxies.ts"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cheerio": "^1.0.0",
+    "@types/node": "^24.1.0",
+    "better-sqlite3": "^12.2.0",
+    "cheerio": "^1.1.2",
+    "crawlee": "^3.5.8q",
+    "express": "^4.17.1",
+    "gray-matter": "^4.0.3",
+    "js-mdict": "^6.0.8",
+    "lodash-es": "^4.17.21",
+    "nodemon": "^3.1.10",
+    "playwright": "^1.0.0",
+    "sqlite3": "^5.0.2",
+    "typescript": "5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.0.0",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "license": "MIT"
+}
